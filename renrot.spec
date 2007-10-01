@@ -1,15 +1,15 @@
 Summary:	A program to rename and rotate files according to EXIF tags
+Summary(pl.UTF-8):	Program do zmiany nazwy i obrotu plików wykorzystuj±c dane EXIF.
 Name:		renrot
 Version:	0.25
-Release:	0.1
+Release:	0.2
 License:	GPL or Artistic
 Group:		Applications/Multimedia
 URL:		http://freshmeat.net/projects/renrot/
 Source0:	ftp://ftp.dn.farlep.net/pub/misc/renrot/%{name}-%{version}.tar.gz
 BuildRequires:	perl(Getopt::Long) >= 2.34
-BuildRequires:	perl(Image::ExifTool) >= 5.72
+BuildRequires:	perl-Image-ExifTool >= 5.72
 Requires:	libjpeg >= 6b
-Requires:	perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -24,6 +24,12 @@ tags.
 
 Personal details can be specified via XMP tags defined in a
 configuration file.
+
+%description -l pl.UTF8
+Renrot zamienia pliki na podstawie tagów EXIF: DateTimeOriginal i
+FileModifyDate w przypadku gdy one istniej±. W innych przypadkach,
+nazwa bêdzie zmieniona nawi±zuj±c do znacznika czasu. Dodatkowo
+obraca pliki i ich miniaturki odpowiednio do tagu EXIF: "U³o¿enie".
 
 %prep
 %setup -q
@@ -64,7 +70,7 @@ fi
 %doc AUTHORS README ChangeLog NEWS TODO
 %lang(ru) %doc README.russian
 %attr(755,root,root) %{_bindir}/renrot
-%{_mandir}/man1/*.1*
+#%{_mandir}/man1/*.1*
 %dir %{_sysconfdir}/%{name}
 %config(noreplace) %{_sysconfdir}/%{name}/colors.conf
 %config(noreplace) %{_sysconfdir}/%{name}/copyright.tag
