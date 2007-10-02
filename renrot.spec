@@ -1,5 +1,5 @@
 Summary:	A program to rename and rotate files according to EXIF tags
-Summary(pl.UTF-8):	Program do zmiany nazwy i obrotu plików wykorzystuj±c dane EXIF.
+Summary(pl.UTF-8):	Program do zmiany nazwy i obrotu plikÃ³w wykorzystujÄ…c dane EXIF.
 Name:		renrot
 Version:	0.25
 Release:	0.2
@@ -26,10 +26,10 @@ Personal details can be specified via XMP tags defined in a
 configuration file.
 
 %description -l pl.UTF8
-Renrot zamienia pliki na podstawie tagów EXIF: DateTimeOriginal i
-FileModifyDate w przypadku gdy one istniej±. W innych przypadkach,
-nazwa bêdzie zmieniona nawi±zuj±c do znacznika czasu. Dodatkowo
-obraca pliki i ich miniaturki odpowiednio do tagu EXIF: "U³o¿enie".
+Renrot zamienia pliki na podstawie tagÃ³w EXIF: DateTimeOriginal i
+FileModifyDate w przypadku gdy one istniejÄ…. W innych przypadkach,
+nazwa bÄ™dzie zmieniona nawiÄ…zujÄ…c do znacznika czasu. Dodatkowo
+obraca pliki i ich miniaturki odpowiednio do tagu EXIF: "UÅ‚oÅ¼enie".
 
 %prep
 %setup -q
