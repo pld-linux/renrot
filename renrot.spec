@@ -10,6 +10,7 @@ Source0:	ftp://ftp.dn.farlep.net/pub/misc/renrot/%{name}-%{version}.tar.gz
 BuildRequires:	perl(Getopt::Long) >= 2.34
 BuildRequires:	perl-ExtUtils-MakeMaker
 BuildRequires:	perl-Image-ExifTool >= 5.72
+BuildRequires:	perl-devel
 Requires:	libjpeg >= 6b
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
