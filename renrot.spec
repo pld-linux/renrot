@@ -8,6 +8,7 @@ Group:		Applications/Multimedia
 URL:		http://freshmeat.net/projects/renrot/
 Source0:	ftp://ftp.dn.farlep.net/pub/misc/renrot/%{name}-%{version}.tar.gz
 BuildRequires:	perl(Getopt::Long) >= 2.34
+BuildRequires:	perl-ExtUtils-MakeMaker
 BuildRequires:	perl-Image-ExifTool >= 5.72
 Requires:	libjpeg >= 6b
 BuildArch:	noarch
