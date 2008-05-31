@@ -1,12 +1,13 @@
 Summary:	A program to rename and rotate files according to EXIF tags
-Summary(pl.UTF-8):	Program do zmiany nazwy i obrotu plików wykorzystując dane EXIF.
+Summary(pl.UTF-8):	Program do zmiany nazw i obrotu plików z wykorzystaniem danych EXIF
 Name:		renrot
 Version:	0.25
 Release:	0.2
 License:	GPL or Artistic
-Group:		Applications/Multimedia
-URL:		http://freshmeat.net/projects/renrot/
+Group:		Applications/Graphics
 Source0:	ftp://ftp.dn.farlep.net/pub/misc/renrot/%{name}-%{version}.tar.gz
+# Source0-md5:	a8cc96c9ebea8ecbf76c83d2d1b2dcbe
+URL:		http://freshmeat.net/projects/renrot/
 BuildRequires:	perl(Getopt::Long) >= 2.34
 BuildRequires:	perl-ExtUtils-MakeMaker
 BuildRequires:	perl-Image-ExifTool >= 5.72
@@ -28,21 +29,31 @@ Personal details can be specified via XMP tags defined in a
 configuration file.
 
 %description -l pl.UTF8
-Renrot zamienia pliki na podstawie tagów EXIF: DateTimeOriginal i
-FileModifyDate w przypadku gdy one istnieją. W innych przypadkach,
-nazwa będzie zmieniona nawiązując do znacznika czasu. Dodatkowo
-obraca pliki i ich miniaturki odpowiednio do tagu EXIF: "Ułożenie".
+Renrot zmienia nazwy plików zgodnie ze znacznikami EXIF
+DateTimeOriginal i FileModifyDate, jeśli one istnieją. W przeciwnym
+wypadku nazwa będzie zmieniona zgodnie z bieżącym znacznikiem czasu.
+Dodatkowo obraca pliki i ich miniaturki zgodnie ze znacznikiem EXIF
+Orientation.
+
+Skrypt potrafi także dodawać komentarze do znaczników Commentary i
+UserComment.
+
+Własne informacje można podać poprzez znaczniki XMP określone w pliku
+konfiguracyjnym.
 
 %prep
 %setup -q
 
 %build
-%{__perl} Makefile.PL PREFIX=%{_prefix}
+%{__perl} Makefile.PL \
+	PREFIX=%{_prefix}
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__make} install PREFIX=$RPM_BUILD_ROOT%{_prefix}
+
+%{__make} install \
+	PREFIX=$RPM_BUILD_ROOT%{_prefix}
 
 # Fix renrot permissions
 chmod 755 $RPM_BUILD_ROOT%{_bindir}/renrot
@@ -63,8 +74,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %triggerin -- renrot < 0.21-0.2.rc2
 if [ -f %{_sysconfdir}/renrot.rc ]; then
-    /bin/mkdir -p %{_sysconfdir}/%{name}
-    /bin/mv -fb %{_sysconfdir}/renrot.rc %{_sysconfdir}/%{name}/renrot.conf
+	mkdir -p %{_sysconfdir}/%{name}
+	mv -fb %{_sysconfdir}/renrot.rc %{_sysconfdir}/%{name}/renrot.conf
 fi
 
 %files
@@ -72,9 +83,8 @@ fi
 %doc AUTHORS README ChangeLog NEWS TODO
 %lang(ru) %doc README.russian
 %attr(755,root,root) %{_bindir}/renrot
-#%{_mandir}/man1/*.1*
 %dir %{_sysconfdir}/%{name}
-%config(noreplace) %{_sysconfdir}/%{name}/colors.conf
-%config(noreplace) %{_sysconfdir}/%{name}/copyright.tag
-%config(noreplace) %{_sysconfdir}/%{name}/renrot.conf
-%config(noreplace) %{_sysconfdir}/%{name}/tags.conf
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}/colors.conf
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}/copyright.tag
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}/renrot.conf
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}/tags.conf
