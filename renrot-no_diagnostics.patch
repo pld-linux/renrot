@@ -1,0 +1,11 @@
+--- renrot-1.1/renrot.old	2010-09-12 11:53:40.000000000 +0200
++++ renrot-1.1/renrot	2010-09-12 11:53:46.000000000 +0200
+@@ -10,7 +10,7 @@
+ 
+ use strict;
+ use warnings;
+-use diagnostics;
++#use diagnostics;
+ require 5.006;
+ use Time::localtime;
+ use Time::Local;

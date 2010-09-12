@@ -1,12 +1,13 @@
 Summary:	A program to rename and rotate files according to EXIF tags
 Summary(pl.UTF-8):	Program do zmiany nazw i obrotu plików z wykorzystaniem danych EXIF
 Name:		renrot
-Version:	0.25
-Release:	0.2
+Version:	1.1
+Release:	1
 License:	GPL or Artistic
 Group:		Applications/Graphics
-Source0:	ftp://ftp.dn.farlep.net/pub/misc/renrot/%{name}-%{version}.tar.gz
-# Source0-md5:	a8cc96c9ebea8ecbf76c83d2d1b2dcbe
+Source0:	ftp://download.gnu.org.ua/pub/release/renrot/%{name}-%{version}.tar.gz
+# Source0-md5:	8670c08323b6af5a72dfeef335601710
+Patch0:		%{name}-no_diagnostics.patch
 URL:		http://freshmeat.net/projects/renrot/
 BuildRequires:	perl(Getopt::Long) >= 2.34
 BuildRequires:	perl-ExtUtils-MakeMaker
@@ -31,18 +32,19 @@ configuration file.
 %description -l pl.UTF8
 Renrot zmienia nazwy plików zgodnie ze znacznikami EXIF
 DateTimeOriginal i FileModifyDate, jeśli one istnieją. W przeciwnym
-wypadku nazwa będzie zmieniona zgodnie z bieżącym znacznikiem czasu.
-Dodatkowo obraca pliki i ich miniaturki zgodnie ze znacznikiem EXIF
-Orientation.
+wypadku nazwa będzie zmieniona zgodnie z bieżącym znacznikiem
+czasu.  Dodatkowo obraca pliki i ich miniaturki zgodnie ze znacznikiem
+EXIF Orientation.
 
 Skrypt potrafi także dodawać komentarze do znaczników Commentary i
 UserComment.
 
-Własne informacje można podać poprzez znaczniki XMP określone w pliku
-konfiguracyjnym.
+Własne informacje można podać poprzez znaczniki XMP określone
+w pliku konfiguracyjnym.
 
 %prep
 %setup -q
+%patch -p1
 
 %build
 %{__perl} Makefile.PL \
