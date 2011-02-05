@@ -29,7 +29,7 @@ tags.
 Personal details can be specified via XMP tags defined in a
 configuration file.
 
-%description -l pl.UTF8
+%description -l pl.UTF-8
 Renrot zmienia nazwy plików zgodnie ze znacznikami EXIF
 DateTimeOriginal i FileModifyDate, jeśli one istnieją. W przeciwnym
 wypadku nazwa będzie zmieniona zgodnie z bieżącym znacznikiem
